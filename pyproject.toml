@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dupehunt"
+version = "0.1.0"
+description = "Find duplicate and near-duplicate files, then quarantine or hard-link the copies you do not need"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["duplicates", "cleanup", "disk-space", "photos", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+images = ["Pillow>=9"]
+dev = ["pytest>=7", "Pillow>=9"]
+
+[project.scripts]
+dupehunt = "dupehunt.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
